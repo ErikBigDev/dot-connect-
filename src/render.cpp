@@ -34,7 +34,13 @@ void display(){
 	double xpos,ypos;
 	glfwGetCursorPos(window,&xpos,&ypos);
 
-	if(clicked)drawLine((int)xpos, (int)ypos, clickX,clickY);
+	if(clicked){
+		point t1((int)xpos,(int) ypos), t2(clickX, clickY);
+		if(!checkValidity(t1,t2))glColor3f(0.8,0.1,0.1);
+		else glColor3f(1.0,1.0,1.0);
+		drawLine((int)xpos, (int)ypos, clickX,clickY);
+	};
+	glColor3f(1.0,1.0,1.0);
 
 	for(int i = 0 ; i < points.size();i++)
 		drawCircle(points[i].getX(), points[i].getY(), defaultRadius);
@@ -69,7 +75,6 @@ void drawCircle(int x, int y, int r){
 
 void drawLine(int x1, int y1  ,int x2 , int y2){
 
-	glColor3f(1.0,1.0,1.0);
 	glBegin(GL_LINES);
 	
 	float cx1 = x1 ,cx2 = x2 , cy1= y1 , cy2 = y2;

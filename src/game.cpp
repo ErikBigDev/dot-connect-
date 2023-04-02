@@ -117,7 +117,7 @@ bool checkValidity (point& p1 , point& p2){
 	for(int i = 0 ; i < lines.size();i++){
 		line l = lines[i];
 
-		if(i == sharedCordIndex[sharedCount] && sharedCordIndex.size() != 0){
+		if( sharedCordIndex.size() != 0 &&i == sharedCordIndex[sharedCount]){
 			sharedCount++;
 			continue;
 		};
