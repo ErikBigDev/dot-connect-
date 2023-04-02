@@ -27,6 +27,11 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods){
 	static point* grabbed;
 	point* attached = nullptr;
 
+	if(button == GLFW_MOUSE_BUTTON_2 && action == GLFW_PRESS){
+		clicked = false;
+		return;
+	};
+
 	for(int i = 0 ; i < points.size();i++){
 		int dx = xpos - points[i].getX();
 		int dy = ypos - points[i].getY();
@@ -34,8 +39,20 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods){
 		if(sqrt(dx*dx+dy*dy) < defaultRadius) attached = &points[i];
 	};
 
-	if(attached == nullptr) return;
-
-	if(action == GLFW_PRESS) grabbed = attached,clicked = true, clickX = xpos , clickY = ypos;
-	if(action == GLFW_RELEASE&& checkValidity(*grabbed,*attached)) connect(*grabbed,*attached), clicked = false;
+	if(attached == nullptr) {
+		clicked = false;
+		return;
+	};
+	
+	if(action == GLFW_PRESS) {
+		grabbed = attached,clicked = true; 
+		clickX = xpos ; 
+		clickY = ypos;
+		return;
+	};
+	if(action == GLFW_RELEASE&& checkValidity(*grabbed,*attached)) {
+		connect(*grabbed,*attached);
+		clicked = false;
+	};
+	clicked = false;
 };

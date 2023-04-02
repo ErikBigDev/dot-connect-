@@ -1,10 +1,12 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <iostream>
+
 class point{
 private:
 	int x , y, numOfConnections;
-	point* connections[3];
+	point* connections[3] = {nullptr};
 public:
 	point();
 	point(int xv ,int yv);
@@ -16,10 +18,16 @@ public:
 	void addConnection(point* p);
 };
 
+struct vert{
+	int x , y;
+	friend bool operator==(const vert& lhs , const vert& rhs){
+		return (lhs.x == rhs.x && lhs.y == rhs.y);
+	};
+};
 struct line{
-	int x1 , x2 ,y1 , y2;
+	vert vert1 , vert2;
 	line(int xv1, int yv1, int xv2, int yv2){
-		x1 = xv1, x2 = xv2 , y1 = yv1 , y2 = yv2;
+		vert1.x = xv1, vert2.x = xv2 , vert1.y = yv1 , vert2.y = yv2;
 	};
 };
 

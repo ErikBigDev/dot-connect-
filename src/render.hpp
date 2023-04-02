@@ -6,6 +6,6 @@
 
 
 void display();
-
+void drawCircle(int x, int y, int r);
 
 #endif 

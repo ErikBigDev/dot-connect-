@@ -15,7 +15,7 @@
 using namespace std;
 
 void display();
-void drawCricle(int x, int y, int r);
+void drawCircle(int x, int y, int r);
 void drawLine(int x1 , int y1, int x2 , int y2);
 
 
@@ -37,14 +37,14 @@ void display(){
 	if(clicked)drawLine((int)xpos, (int)ypos, clickX,clickY);
 
 	for(int i = 0 ; i < points.size();i++)
-		drawCricle(points[i].getX(), points[i].getY(), defaultRadius);
+		drawCircle(points[i].getX(), points[i].getY(), defaultRadius);
 	for(int i = 0 ; i < lines.size(); i++)
-		drawLine(lines[i].x1 , lines[i].y1, lines[i].x2, lines[i].y2);
+		drawLine(lines[i].vert1.x , lines[i].vert1.y, lines[i].vert2.x, lines[i].vert2.y);
 };
 
 
 
-void drawCricle(int x, int y, int r){
+void drawCircle(int x, int y, int r){
 
 	glBegin(GL_POLYGON);
 

@@ -4,7 +4,7 @@ CC = g++
 LFLAGS = -lGL -lglfw
 SOURCE_FILES = src/main.cpp src/game.cpp src/render.cpp src/controls.cpp
 OBJECT_FILES =
-CFLAGS = $(shell pkg-config --cflags gl glfw3)
+CFLAGS = $(shell pkg-config --cflags gl glfw3) -g
 
 all:.DotGame.out
 
