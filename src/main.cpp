@@ -1,5 +1,5 @@
 #include <iostream>
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 #include "render.hpp"
 #include "game.hpp"
 #include "controls.hpp"
